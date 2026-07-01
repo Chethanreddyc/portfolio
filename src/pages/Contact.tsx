@@ -1,4 +1,6 @@
 import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { RainbowButton } from "@/components/ui/rainbow-button";
+import { MagicCard } from "@/components/ui/magic-card";
 
 function Contact() {
   return (
@@ -6,7 +8,8 @@ function Contact() {
       id="contact"
       className="flex min-h-[calc(100vh-6rem)] items-center justify-center px-6 py-12 md:px-16 lg:px-24"
     >
-      <div className="w-full max-w-5xl rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-8 md:p-12 backdrop-blur-md shadow-xl flex flex-col md:flex-row gap-12">
+      <MagicCard className="w-full max-w-5xl rounded-2xl shadow-xl">
+        <div className="flex flex-col md:flex-row gap-12 p-8 md:p-12">
         
         {/* Info Side */}
         <div className="flex-1 flex flex-col justify-between">
@@ -96,21 +99,19 @@ function Contact() {
               ></textarea>
             </div>
 
-            <button
+            <RainbowButton
+              variant="outline"
               type="submit"
               className="cursor-target flex items-center justify-center gap-2 rounded-lg w-full py-3 text-sm font-semibold text-white transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg"
-              style={{
-                backgroundImage: "linear-gradient(135deg, #7c5a9b 0%, #B497CF 100%)",
-              }}
             >
               <Send className="size-4" />
               Send Message
-            </button>
+            </RainbowButton>
           </form>
         </div>
-
       </div>
-    </section>
+    </MagicCard>
+  </section>
   );
 }
 

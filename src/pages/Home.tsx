@@ -11,7 +11,7 @@ function Home() {
   return (
     <section
       id="home"
-      className="flex min-h-[calc(100vh-6rem)] items-center justify-center px-6 md:px-16 lg:px-24"
+      className="flex min-h-[calc(100vh-13rem)] items-center justify-center px-6 md:px-16 lg:px-24"
     >
       <div className="flex w-full max-w-6xl flex-col-reverse items-center gap-12 md:flex-row md:gap-16 lg:gap-24">
         {/* Intro Text */}
@@ -32,7 +32,7 @@ function Home() {
               className="text-foreground inline-block"
             />
             <SplitText
-              text="CHETHAN"
+              text="chethan"
               delay={40}
               duration={0.8}
               tag="span"

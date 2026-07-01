@@ -4,54 +4,12 @@ import { useState, useEffect } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
 import SplitText from "@/components/ui/SplitText";
 import { RippleDisplacementSlider } from "@/components/ui/ripple-displacement-slider";
+import { Skiper31 } from "@/components/ui/skiper-ui/skiper31";
 
 function About() {
   const [scale, setScale] = useState(0.85);
 
-  // Custom smooth scroll velocity control (inertial damping)
-  useEffect(() => {
-    let currentScroll = window.scrollY;
-    let targetScroll = window.scrollY;
-    let isScrolling = false;
 
-    const handleWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      targetScroll += e.deltaY * 0.45;
-      targetScroll = Math.max(0, Math.min(targetScroll, document.documentElement.scrollHeight - window.innerHeight));
-
-      if (!isScrolling) {
-        isScrolling = true;
-        requestAnimationFrame(updateScroll);
-      }
-    };
-
-    const updateScroll = () => {
-      const diff = targetScroll - currentScroll;
-      currentScroll += diff * 0.085;
-      window.scrollTo(0, currentScroll);
-
-      if (Math.abs(diff) > 0.5) {
-        requestAnimationFrame(updateScroll);
-      } else {
-        isScrolling = false;
-      }
-    };
-
-    const handleScroll = () => {
-      if (!isScrolling) {
-        currentScroll = window.scrollY;
-        targetScroll = window.scrollY;
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -207,6 +165,7 @@ function About() {
         </motion.section>
       </div>
 
+      <Skiper31 />
 
       {/* Certifications Section — heading + giant floating slider, side by side */}
       <motion.section

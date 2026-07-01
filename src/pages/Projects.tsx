@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ExternalLink, Github, ArrowDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const STAGE_1_PROJECTS = [
   {
@@ -339,14 +340,13 @@ function Projects() {
           You've traced the entire progress line. Ready to discuss a collaboration or custom project?
         </p>
         <div className="flex items-center gap-4">
-          <Link
-            to="/contact"
-            className="cursor-target rounded-full px-6 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-violet-600 to-pink-600 shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5"
-          >
-            Get in Touch
-          </Link>
+          <RainbowButton asChild variant="outline" size="lg" className="rounded-full cursor-target">
+            <Link to="/contact">
+              Get in Touch
+            </Link>
+          </RainbowButton>
           <a
-            href="https://github.com"
+            href="https://github.com/Chethanreddyc"
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-target rounded-full px-6 py-2.5 text-sm font-semibold border border-foreground/15 hover:bg-foreground/5 transition-colors"

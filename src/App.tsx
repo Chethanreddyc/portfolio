@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom"
+import { flushSync } from "react-dom"
 import DotField from "./components/ui/DotField"
 import { AnimatedThemeToggler } from "./components/ui/animated-theme-toggler"
 import { Dock, DockIcon } from "./components/ui/dock"
@@ -9,7 +10,8 @@ import HomePage from "./pages/Home"
 import AboutPage from "./pages/About"
 import ProjectsPage from "./pages/Projects"
 import ContactPage from "./pages/Contact"
-import { Github, Linkedin, FileText } from "lucide-react"
+import { Github, Linkedin, FileText, Mail } from "lucide-react"
+import Preloader from "./components/Preloader"
 
 const XLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -21,7 +23,7 @@ const pillNavItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" }, 
+  { label: "Contact", href: "/contact" },
 ]
 
 function useTheme() {
@@ -63,6 +65,49 @@ function AppContent() {
   const pillPillColor = isDark ? "#000000" : "#ffffff"
   const pillHoveredTextColor = isDark ? "#000000" : "#ffffff"
   const pillTextColor = isDark ? "#ffffff" : "#000000"
+
+  const [showLoader, setShowLoader] = useState(() => {
+    return window.location.pathname === "/" && !sessionStorage.getItem("portfolio-visited");
+  });
+
+  const handlePreloaderComplete = () => {
+    sessionStorage.setItem("portfolio-visited", "true");
+
+    if (typeof document.startViewTransition === "function") {
+      const transition = document.startViewTransition(() => {
+        flushSync(() => {
+          setShowLoader(false);
+        });
+      });
+
+      transition.ready.then(() => {
+        const x = window.innerWidth / 2;
+        const y = window.innerHeight / 2;
+        const maxRadius = Math.hypot(x, y);
+
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${maxRadius}px at ${x}px ${y}px)`,
+            ],
+          },
+          {
+            duration: 850,
+            easing: "ease-in-out",
+            fill: "forwards",
+            pseudoElement: "::view-transition-new(root)",
+          }
+        );
+      });
+    } else {
+      setShowLoader(false);
+    }
+  };
+
+  if (showLoader) {
+    return <Preloader onComplete={handlePreloaderComplete} />;
+  }
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
@@ -156,18 +201,23 @@ function AppContent() {
           }}
         >
           <DockIcon className="cursor-target">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+            <a href="https://github.com/Chethanreddyc" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center" aria-label="GitHub">
               <Github className="size-5 text-foreground/80" />
             </a>
           </DockIcon>
           <DockIcon className="cursor-target">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+            <a href="https://www.linkedin.com/in/chethan-reddy-chundu-65a783296" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center" aria-label="LinkedIn">
               <Linkedin className="size-5 text-foreground/80" />
             </a>
           </DockIcon>
           <DockIcon className="cursor-target">
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+            <a href="https://x.com/Chethan_1303" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center" aria-label="X (formerly Twitter)">
               <XLogo className="size-5 text-foreground/80" />
+            </a>
+          </DockIcon>
+          <DockIcon className="cursor-target">
+            <a href="mailto:chethanreddy0503@gmail.com" className="flex items-center justify-center" aria-label="Email">
+              <Mail className="size-5 text-foreground/80" />
             </a>
           </DockIcon>
           <DockIcon className="cursor-target">
