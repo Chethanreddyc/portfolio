@@ -1,7 +1,9 @@
 import TiltedCard from "@/components/TiltedCard";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
-import { RainbowButton } from "@/components/ui/rainbow-button";
-import { useNavigate, Link } from "react-router-dom";
+import { CreepyButton } from "@/components/ui/creepy-button";
+import SplitText from "@/components/ui/SplitText";
+import BlurText from "../components/BlurText";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
@@ -20,28 +22,38 @@ function Home() {
             Welcome to my portfolio
           </span>
 
-          <h1 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Hi, I'm{" "}
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #B497CF 0%, #7c5a9b 50%, #B497CF 100%)",
-              }}
-            >
-              CHETHAN
-            </span>
+          <h1 className="flex flex-wrap items-center justify-center md:justify-start gap-x-[0.2em] text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <SplitText
+              text="Hi, I'm"
+              delay={40}
+              duration={0.8}
+              tag="span"
+              textAlign="left"
+              className="text-foreground inline-block"
+            />
+            <SplitText
+              text="CHETHAN"
+              delay={40}
+              duration={0.8}
+              tag="span"
+              textAlign="left"
+              className="gradient-text inline-block"
+            />
           </h1>
 
-          <p className="mt-3 text-lg font-medium text-foreground/70 sm:text-xl">
-            Full-Stack Developer & Creative Technologist
-          </p>
+          <BlurText
+            text="Full-Stack Developer & Creative Technologist"
+            className="mt-3 text-lg font-medium text-foreground/70 sm:text-xl justify-center md:justify-start flex-wrap"
+            delay={40}
+            animateBy="words"
+          />
 
-          <p className="mt-5 max-w-md text-base leading-relaxed text-foreground/50">
-            I craft beautiful, performant digital experiences that blend
-            cutting-edge technology with thoughtful design. Let's build
-            something extraordinary together.
-          </p>
+          <BlurText
+            text="I craft beautiful, performant digital experiences that blend cutting-edge technology with thoughtful design. Let's build something extraordinary together."
+            className="mt-5 max-w-md text-base leading-relaxed text-foreground/50 justify-center md:justify-start flex-wrap"
+            delay={20}
+            animateBy="words"
+          />
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <InteractiveHoverButton
@@ -50,15 +62,12 @@ function Home() {
             >
               View My Work
             </InteractiveHoverButton>
-            <RainbowButton
-              variant="outline"
-              asChild
-              className="cursor-target rounded-full font-semibold"
+            <CreepyButton
+              onClick={() => navigate("/contact")}
+              className="cursor-target"
             >
-              <Link to="/contact">
-                Get In Touch
-              </Link>
-            </RainbowButton>
+              Get In Touch
+            </CreepyButton>
           </div>
         </div>
 

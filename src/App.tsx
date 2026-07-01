@@ -76,23 +76,25 @@ function AppContent() {
         hideDefaultCursor={true}
       />
 
-      {/* Background – DotField fills the entire viewport */}
-      <div className="fixed inset-0 z-0">
-        <DotField
-          dotRadius={2}
-          dotSpacing={22}
-          bulgeStrength={67}
-          glowRadius={0}
-          sparkle={false}
-          waveAmplitude={0}
-          cursorRadius={500}
-          cursorForce={0.1}
-          bulgeOnly
-          gradientFrom={isDark ? "#5b595dff" : "#a8a3adcc"}
-          gradientTo={isDark ? "#B497CF" : "#7c5a9b"}
-          glowColor={isDark ? "#120F17" : "#f5f0fa"}
-        />
-      </div>
+      {/* Background – DotField fills the entire viewport (hidden on /projects page) */}
+      {location.pathname !== "/projects" && (
+        <div className="fixed inset-0 z-0">
+          <DotField
+            dotRadius={2}
+            dotSpacing={22}
+            bulgeStrength={67}
+            glowRadius={0}
+            sparkle={false}
+            waveAmplitude={0}
+            cursorRadius={500}
+            cursorForce={0.1}
+            bulgeOnly
+            gradientFrom={isDark ? "#5b595dff" : "#a8a3adcc"}
+            gradientTo={isDark ? "#B497CF" : "#7c5a9b"}
+            glowColor={isDark ? "#120F17" : "#f5f0fa"}
+          />
+        </div>
+      )}
 
       {/* PillNav – fixed top center */}
       <div className="pillnav-container fixed top-4 left-1/2 z-50 -translate-x-1/2">
