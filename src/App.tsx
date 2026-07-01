@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react"
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom"
 import DotField from "./components/ui/DotField"
 import { AnimatedThemeToggler } from "./components/ui/animated-theme-toggler"
 import { Dock, DockIcon } from "./components/ui/dock"
 import TargetCursor from "./components/TargetCursor"
 import PillNav from "./components/PillNav"
 import HomePage from "./pages/Home"
-import { Home, User, Briefcase, Mail, Github } from "lucide-react"
+import AboutPage from "./pages/About"
+import ProjectsPage from "./pages/Projects"
+import ContactPage from "./pages/Contact"
+import { Github, Linkedin, FileText } from "lucide-react"
+
+const XLogo = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
 
 const pillNavItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "/contact" }, 
 ]
 
 function useTheme() {
@@ -33,8 +43,9 @@ function useTheme() {
   return isDark
 }
 
-function App() {
+function AppContent() {
   const isDark = useTheme()
+  const location = useLocation()
 
   // Theme-adaptive colors
   const cursorColor = isDark ? "#e7e3ebff" : "#2d2a30"
@@ -69,7 +80,7 @@ function App() {
       <div className="fixed inset-0 z-0">
         <DotField
           dotRadius={2}
-          dotSpacing={14}
+          dotSpacing={22}
           bulgeStrength={67}
           glowRadius={0}
           sparkle={false}
@@ -89,6 +100,7 @@ function App() {
           logo="/favicon.svg"
           logoAlt="Portfolio"
           items={pillNavItems}
+          activeHref={location.pathname}
           baseColor={pillBaseColor}
           pillColor={pillPillColor}
           hoveredPillTextColor={pillHoveredTextColor}
@@ -105,8 +117,8 @@ function App() {
             borderWidth: 1,
             borderStyle: "solid",
             borderColor: glassBorder,
-            backdropFilter: "blur(16px) saturate(180%)",
-            WebkitBackdropFilter: "blur(16px) saturate(180%)",
+            backdropFilter: "blur(8px) saturate(140%)",
+            WebkitBackdropFilter: "blur(8px) saturate(140%)",
           }}
         >
           <AnimatedThemeToggler
@@ -118,8 +130,13 @@ function App() {
       </div>
 
       {/* Main Content */}
-      <main className="relative z-10 pt-24">
-        <HomePage />
+      <main className="relative z-10 pt-24 pb-28">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </main>
 
       {/* Glossy Dock – fixed bottom center */}
@@ -132,28 +149,41 @@ function App() {
             borderWidth: 1,
             borderStyle: "solid",
             borderColor: glassBorder,
-            backdropFilter: "blur(20px) saturate(180%)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            backdropFilter: "blur(10px) saturate(140%)",
+            WebkitBackdropFilter: "blur(10px) saturate(140%)",
           }}
         >
           <DockIcon className="cursor-target">
-            <Home className="size-5 text-foreground/80" />
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+              <Github className="size-5 text-foreground/80" />
+            </a>
           </DockIcon>
           <DockIcon className="cursor-target">
-            <User className="size-5 text-foreground/80" />
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+              <Linkedin className="size-5 text-foreground/80" />
+            </a>
           </DockIcon>
           <DockIcon className="cursor-target">
-            <Briefcase className="size-5 text-foreground/80" />
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+              <XLogo className="size-5 text-foreground/80" />
+            </a>
           </DockIcon>
           <DockIcon className="cursor-target">
-            <Mail className="size-5 text-foreground/80" />
-          </DockIcon>
-          <DockIcon className="cursor-target">
-            <Github className="size-5 text-foreground/80" />
+            <a href="#" className="flex items-center justify-center" aria-label="Resume">
+              <FileText className="size-5 text-foreground/80" />
+            </a>
           </DockIcon>
         </Dock>
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   )
 }
 

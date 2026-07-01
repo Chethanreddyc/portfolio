@@ -1,6 +1,11 @@
 import TiltedCard from "@/components/TiltedCard";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { RainbowButton } from "@/components/ui/rainbow-button";
+import { useNavigate, Link } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <section
       id="home"
@@ -24,7 +29,7 @@ function Home() {
                   "linear-gradient(135deg, #B497CF 0%, #7c5a9b 50%, #B497CF 100%)",
               }}
             >
-              Cr7ch
+              CHETHAN
             </span>
           </h1>
 
@@ -39,61 +44,42 @@ function Home() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#projects"
-              className="cursor-target inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              style={{
-                backgroundImage:
-                  "linear-gradient(135deg, #7c5a9b 0%, #B497CF 100%)",
-              }}
+            <InteractiveHoverButton
+              onClick={() => navigate("/projects")}
+              className="cursor-target"
             >
               View My Work
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href="#contact"
-              className="cursor-target inline-flex items-center rounded-full px-7 py-3 text-sm font-semibold text-foreground/80 transition-all duration-300 hover:text-foreground hover:scale-105"
-              style={{
-                border: "1px solid rgba(128,128,128,0.25)",
-                backdropFilter: "blur(8px)",
-              }}
+            </InteractiveHoverButton>
+            <RainbowButton
+              variant="outline"
+              asChild
+              className="cursor-target rounded-full font-semibold"
             >
-              Get In Touch
-            </a>
+              <Link to="/contact">
+                Get In Touch
+              </Link>
+            </RainbowButton>
           </div>
         </div>
 
         {/* TiltedCard */}
         <div className="flex flex-1 items-center justify-center">
           <TiltedCard
-            imageSrc=""
-            altText="Kendrick Lamar - GNX Album Cover"
-            captionText="Kendrick Lamar - GNX"
+            imageSrc="/DSC00147.JPG"
+            altText="Chethan - GNX Album Cover"
+            captionText="CHETHAN"
             containerHeight="340px"
             containerWidth="340px"
             imageHeight="340px"
             imageWidth="340px"
-            rotateAmplitude={12}
+            rotateAmplitude={29}
             scaleOnHover={1.05}
-            showMobileWarning={false}
-            showTooltip
-            displayOverlayContent
+            showMobileWarning={true}
+            showTooltip={false}
+            displayOverlayContent={true}
             overlayContent={
               <p className="tilted-card-demo-text">
-                Kendrick Lamar - GNX
+                CHETHAN
               </p>
             }
           />

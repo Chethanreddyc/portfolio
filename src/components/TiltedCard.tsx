@@ -33,9 +33,9 @@ export default function TiltedCard({
   imageHeight = '300px',
   imageWidth = '300px',
   scaleOnHover = 1.1,
-  rotateAmplitude = 14,
+  rotateAmplitude = 29,
   showMobileWarning = true,
-  showTooltip = true,
+  showTooltip = false,
   overlayContent = null,
   displayOverlayContent = false
 }: TiltedCardProps) {
@@ -127,7 +127,10 @@ export default function TiltedCard({
         />
 
         {displayOverlayContent && overlayContent && (
-          <motion.div className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]">
+          <motion.div
+            className="absolute top-0 left-0 z-[2] w-full h-full flex items-start justify-start will-change-transform rounded-[15px]"
+            style={{ transform: 'translateZ(30px)' }}
+          >
             {overlayContent}
           </motion.div>
         )}
