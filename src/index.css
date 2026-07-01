@@ -126,4 +126,52 @@
   html {
     @apply font-sans;
     }
+  * {
+  cursor: none !important;
+}
+}
+
+/* GPU compositing hints for heavy animated layers */
+canvas {
+  will-change: contents;
+  contain: strict;
+}
+
+/* Isolate backdrop-filter cost to its own compositing layer */
+nav > div,
+.dock-glass {
+  will-change: backdrop-filter;
+  contain: layout style paint;
+}
+
+/* Promote TargetCursor to GPU layer */
+.target-cursor-corner {
+  will-change: transform;
+}
+
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+/* Theme toggle wrapper entrance */
+.theme-toggle-wrapper {
+  animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Override PillNav absolute positioning inside fixed parent */
+.pillnav-container > .absolute {
+  position: relative;
+  top: auto;
 }
