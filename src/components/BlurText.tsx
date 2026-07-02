@@ -97,7 +97,7 @@ const BlurText: React.FC<BlurTextProps> = ({
           duration: totalDuration,
           times,
           delay: (index * delay) / 1000,
-          ease: easing
+          ease: easing as any
         };
 
         return (

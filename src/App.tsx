@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react"
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
 import { flushSync } from "react-dom"
 import DotField from "./components/ui/DotField"
 import { AnimatedThemeToggler } from "./components/ui/animated-theme-toggler"

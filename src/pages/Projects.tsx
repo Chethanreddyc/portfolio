@@ -101,14 +101,14 @@ function Projects() {
   // Stage 1 animation logic: visible from ~15% to 55% scroll progress
   const stage1Opacity = useTransform(smoothProgress, [0.1, 0.2, 0.45, 0.55], [0, 1, 1, 0]);
   const stage1Y = useTransform(smoothProgress, [0.1, 0.2, 0.45, 0.55], [60, 0, 0, -60]);
-  const stage1PointerEvents = useTransform(smoothProgress, [0.15, 0.5], (val) => 
+  const stage1PointerEvents = useTransform(smoothProgress, (val: number) => 
     val >= 0.15 && val <= 0.5 ? "auto" : "none"
   );
 
   // Stage 2 animation logic: visible from ~50% to 85% scroll progress
   const stage2Opacity = useTransform(smoothProgress, [0.45, 0.55, 0.78, 0.85], [0, 1, 1, 0]);
   const stage2Y = useTransform(smoothProgress, [0.45, 0.55, 0.78, 0.85], [60, 0, 0, -60]);
-  const stage2PointerEvents = useTransform(smoothProgress, [0.5, 0.8], (val) => 
+  const stage2PointerEvents = useTransform(smoothProgress, (val: number) => 
     val >= 0.5 && val <= 0.8 ? "auto" : "none"
   );
 
@@ -192,7 +192,7 @@ function Projects() {
         style={{ 
           opacity: stage1Opacity, 
           y: stage1Y,
-          pointerEvents: stage1PointerEvents 
+          pointerEvents: stage1PointerEvents as any
         }}
         className="absolute top-[80vh] left-[5%] md:left-[8%] lg:left-[12%] w-[90%] md:w-[45%] lg:w-[38%] z-10 flex flex-col gap-6"
       >
@@ -271,7 +271,7 @@ function Projects() {
         style={{ 
           opacity: stage2Opacity, 
           y: stage2Y,
-          pointerEvents: stage2PointerEvents 
+          pointerEvents: stage2PointerEvents as any
         }}
         className="absolute top-[165vh] right-[5%] md:right-[8%] lg:right-[12%] w-[90%] md:w-[45%] lg:w-[38%] z-10 flex flex-col gap-6"
       >
