@@ -84,7 +84,7 @@ function Home() {
             rotateAmplitude={29}
             scaleOnHover={1.05}
             showMobileWarning={true}
-            showTooltip={false}
+            showTooltip={true}
             displayOverlayContent={true}
             overlayContent={
               <p className="tilted-card-demo-text">

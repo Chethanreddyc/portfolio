@@ -93,6 +93,60 @@ function About() {
           </motion.div>
         </section>
 
+        {/* Experience Timeline Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="w-full mt-24 pt-16 border-t border-foreground/10 text-left"
+        >
+          <div className="mb-12">
+            <SplitText
+              text="Experience"
+              tag="h2"
+              className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl mt-2 block"
+              textAlign="left"
+              delay={40}
+              duration={1.0}
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+            />
+          </div>
+
+          <ScrollReveal
+            baseOpacity={0.1}
+            enableBlur={true}
+            baseRotation={3}
+            blurStrength={4}
+            containerClassName="w-full"
+          >
+            <div className="relative pl-8 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-[2px] before:bg-foreground/10 max-w-4xl">
+              {/* Timeline Item 1 */}
+              <div className="relative timeline-item">
+                <div className="absolute -left-[38px] top-1.5 size-5 rounded-full border-4 border-background bg-[#7c5a9b] shadow-sm transition-transform duration-300 hover:scale-125" />
+                <div className="rounded-2xl border border-foreground/10 bg-[#7c5a9b]/5 dark:bg-[#7c5a9b]/2 border-t-[#7c5a9b]/20 backdrop-blur-md p-6 shadow-md transition-all duration-300 hover:border-foreground/20 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-foreground">Frontend Developer Intern</h3>
+                      <p className="text-sm font-semibold text-foreground/50">PETZU</p>
+                    </div>
+                    <span className="self-start sm:self-center inline-block rounded-full bg-[#7c5a9b]/10 text-[#7c5a9b] dark:text-[#B497CF] dark:bg-[#B497CF]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider">
+                      2024 — 2025
+                    </span>
+                  </div>
+                  <ul className="list-disc list-inside space-y-2 text-foreground/75 leading-relaxed text-sm md:text-base">
+                    <li>Collaborated within a 5-7 member startup team to develop responsive frontend interfaces for a production-grade pet marketplace platform using React.js and Tailwind CSS.</li>
+                    <li>Built reusable UI components and improved accessibility, and user interaction workflows across multiple pages.</li>
+                    <li>Implemented Framer Motion-based animations, hover effects, and page transitions to enhance overall user experience.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </motion.section>
+
         {/* Education Timeline Section */}
         <motion.section
           initial={{ opacity: 0, y: 30 }}
@@ -129,14 +183,17 @@ function About() {
                 <div className="rounded-2xl border border-foreground/10 bg-[#7c5a9b]/5 dark:bg-[#7c5a9b]/2 border-t-[#7c5a9b]/20 backdrop-blur-md p-6 shadow-md transition-all duration-300 hover:border-foreground/20 hover:-translate-y-1 hover:shadow-lg">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">Bachelor of Engineering</h3>
-                      <p className="text-sm font-semibold text-foreground/50">Computer Science & Engineering</p>
+                      <h3 className="text-xl font-bold text-foreground">B.Tech in Computer Science Engineering</h3>
+                      <p className="text-sm font-semibold text-foreground/50">KL University, Vijayawada</p>
                     </div>
                     <span className="self-start sm:self-center inline-block rounded-full bg-[#7c5a9b]/10 text-[#7c5a9b] dark:text-[#B497CF] dark:bg-[#B497CF]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider">
-                      2022 — 2026
+                      2023 — 2027
                     </span>
                   </div>
-                  <p className="text-foreground/75 leading-relaxed text-sm md:text-base">
+                  <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-semibold">
+                    CGPA: 9.37 / 10
+                  </p>
+                  <p className="text-foreground/75 leading-relaxed text-sm md:text-base mt-2">
                     Specializing in core software engineering, data structures, algorithms, and full-stack web applications. Participated in practical labs, system design workshops, and collaborative projects.
                   </p>
                 </div>
@@ -148,15 +205,18 @@ function About() {
                 <div className="rounded-2xl border border-foreground/10 bg-[#B497CF]/5 dark:bg-[#B497CF]/2 border-t-[#B497CF]/20 backdrop-blur-md p-6 shadow-md transition-all duration-300 hover:border-foreground/20 hover:-translate-y-1 hover:shadow-lg">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground">Pre-University College (Class XII)</h3>
-                      <p className="text-sm font-semibold text-foreground/50">Physics, Chemistry, Mathematics & Computer Science</p>
+                      <h3 className="text-xl font-bold text-foreground">Intermediate (MPC)</h3>
+                      <p className="text-sm font-semibold text-foreground/50">Narayana Junior College</p>
                     </div>
                     <span className="self-start sm:self-center inline-block rounded-full bg-foreground/10 text-foreground/70 px-3 py-1 text-xs font-bold uppercase tracking-wider">
-                      2020 — 2022
+                      2021 — 2023
                     </span>
                   </div>
-                  <p className="text-foreground/75 leading-relaxed text-sm md:text-base">
-                    Completed higher secondary education with a focus on core sciences and programming fundamentals, building a strong base for computer science studies.
+                  <p className="text-foreground/75 leading-relaxed text-sm md:text-base font-semibold">
+                    Marks: 957 / 1000
+                  </p>
+                  <p className="text-foreground/75 leading-relaxed text-sm md:text-base mt-2">
+                    Completed higher secondary education with a focus on Physics, Chemistry, Mathematics, and programming fundamentals, building a strong base for computer science studies.
                   </p>
                 </div>
               </div>

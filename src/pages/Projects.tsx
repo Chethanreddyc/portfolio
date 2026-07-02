@@ -6,27 +6,27 @@ import { RainbowButton } from "@/components/ui/rainbow-button";
 
 const STAGE_1_PROJECTS = [
   {
-    title: "Project Alpha",
-    description: "A premium interactive dashboard featuring real-time data visualization, glassmorphism UI widgets, and customizable drag-and-drop layouts.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Recharts"],
-    github: "#",
-    live: "#"
+    title: "STAY – Rental Platform",
+    description: "Built and deployed a full-stack MERN property rental platform supporting authentication, property listings, image uploads, and search functionality. Implemented JWT-based role authorization and developed RESTful backend APIs for listing and user management. Integrated Cloudinary for asynchronous image uploads and deployed services using Vercel and Render.",
+    tags: ["React.js", "Node.js", "MongoDB", "Express", "JWT", "Cloudinary"],
+    github: "https://github.com/Chethanreddyc",
+    live: "https://stay-two.vercel.app"
   },
   {
-    title: "Project Beta",
-    description: "An immersive e-commerce platform built with Next.js, featuring smooth animated page transitions, localized payment integration, and a rich admin workspace.",
-    tags: ["Next.js", "Stripe", "Prisma", "Framer Motion"],
-    github: "#",
+    title: "Code Analyzer",
+    description: "Developed a browser extension for LeetCode and HackerRank that performs AI-assisted code review directly within coding platforms. Engineered DOM-based workflows to analyze submitted solutions for code quality, optimal approaches, and complexity analysis. Implemented dynamic AI provider configuration supporting Gemini, OpenAI, and Groq model integration.",
+    tags: ["JavaScript", "Manifest V3", "Gemini API", "OpenAI API", "Groq API"],
+    github: "https://github.com/Chethanreddyc/Code_Analyzer",
     live: "#"
   }
 ];
 
 const STAGE_2_PROJECTS = [
   {
-    title: "Project Gamma",
-    description: "A creative web experience utilizing three.js and custom shaders to visualize complex planetary orbits and simulate gravity fields.",
-    tags: ["React Three Fiber", "Three.js", "GLSL", "GSAP"],
-    github: "#",
+    title: "AI-Powered Cyber Tool",
+    description: "Developed a desktop-based cybersecurity suite integrating AI-assisted threat analysis into a unified security utility. Built modules for password entropy analysis, phishing email detection, credential security assessment, and automated report generation. Integrated Google Gemini API to analyze suspicious emails for phishing indicators, sender spoofing, and malicious links.",
+    tags: ["Python", "CustomTkinter", "Gemini API"],
+    github: "https://github.com/Chethanreddyc/Cyber-Tool",
     live: "#"
   }
 ];
@@ -36,8 +36,9 @@ function Projects() {
 
   // Custom smooth scroll velocity control (inertial damping)
   useEffect(() => {
-    let currentScroll = window.scrollY;
-    let targetScroll = window.scrollY;
+    window.scrollTo(0, 0);
+    let currentScroll = 0;
+    let targetScroll = 0;
     let isScrolling = false;
 
     const handleWheel = (e: WheelEvent) => {
@@ -200,13 +201,13 @@ function Projects() {
             <span className="px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded-md bg-purple-500/10 text-purple-400 border border-purple-500/20">
               Stage 01
             </span>
-            <span className="text-xs text-foreground/50 font-medium">Software Engineering</span>
+            <span className="text-xs text-foreground/50 font-medium">Web & Extensions</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-            SaaS & Product Applications
+            Web Apps & Browser Extensions
           </h2>
           <p className="text-foreground/60 text-sm">
-            High performance web platforms with robust architectures, sleek dashboards, and complete e-commerce integrations.
+            Full-stack web applications and browser extensions developed to solve real-world problems and enhance productivity.
           </p>
         </div>
 
@@ -236,20 +237,28 @@ function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4 pt-3 border-t border-foreground/10">
-                  <a
-                    href={project.github}
-                    className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    <Github className="size-4" />
-                    Source
-                  </a>
-                  <a
-                    href={project.live}
-                    className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink className="size-4" />
-                    Demo
-                  </a>
+                  {project.github !== "#" && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
+                    >
+                      <Github className="size-4" />
+                      Source
+                    </a>
+                  )}
+                  {project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
+                    >
+                      <ExternalLink className="size-4" />
+                      Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -271,13 +280,13 @@ function Projects() {
             <span className="px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider rounded-md bg-pink-500/10 text-pink-400 border border-pink-500/20">
               Stage 02
             </span>
-            <span className="text-xs text-foreground/50 font-medium">Creative & Graphics</span>
+            <span className="text-xs text-foreground/50 font-medium">Desktop & AI</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-            Creative Coding & 3D Web
+            Desktop & Security Utilities
           </h2>
           <p className="text-foreground/60 text-sm">
-            Immersive 3D interfaces utilizing WebGL, custom shaders, and physics animations to create engaging digital art.
+            Desktop-based utilities and security suites utilizing local GUI libraries and AI integrations.
           </p>
         </div>
 
@@ -307,20 +316,28 @@ function Projects() {
                 </div>
 
                 <div className="flex items-center gap-4 pt-3 border-t border-foreground/10">
-                  <a
-                    href={project.github}
-                    className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    <Github className="size-4" />
-                    Source
-                  </a>
-                  <a
-                    href={project.live}
-                    className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
-                  >
-                    <ExternalLink className="size-4" />
-                    Demo
-                  </a>
+                  {project.github !== "#" && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
+                    >
+                      <Github className="size-4" />
+                      Source
+                    </a>
+                  )}
+                  {project.live !== "#" && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-target flex items-center gap-1.5 text-xs font-semibold text-foreground/60 hover:text-foreground transition-colors"
+                    >
+                      <ExternalLink className="size-4" />
+                      Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

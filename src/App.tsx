@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom"
 import { flushSync } from "react-dom"
 import DotField from "./components/ui/DotField"
@@ -12,6 +12,11 @@ import ProjectsPage from "./pages/Projects"
 import ContactPage from "./pages/Contact"
 import { Github, Linkedin, FileText, Mail } from "lucide-react"
 import Preloader from "./components/Preloader"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
 
 const XLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -142,9 +147,9 @@ function AppContent() {
       )}
 
       {/* PillNav – fixed top center */}
-      <div className="pillnav-container fixed top-4 left-1/2 z-50 -translate-x-1/2">
+      <div className="pillnav-container fixed top-1 left-1/2 z-50 -translate-x-1/2">
         <PillNav
-          logo="/favicon.svg"
+          logo="/icons8-c-100.png"
           logoAlt="Portfolio"
           items={pillNavItems}
           activeHref={location.pathname}
@@ -177,7 +182,7 @@ function AppContent() {
       </div>
 
       {/* Main Content */}
-      <main className="relative z-10 pt-24 pb-28">
+      <main className="relative z-10 pt-24 pb-0">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -221,7 +226,12 @@ function AppContent() {
             </a>
           </DockIcon>
           <DockIcon className="cursor-target">
-            <a href="#" className="flex items-center justify-center" aria-label="Resume">
+            <a
+              href="/CHETHAN_RESUME (1).pdf"
+              download="Chundu_Chethan_Reddy_Resume.pdf"
+              className="flex items-center justify-center"
+              aria-label="Resume"
+            >
               <FileText className="size-5 text-foreground/80" />
             </a>
           </DockIcon>
@@ -231,9 +241,31 @@ function AppContent() {
   )
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  const lastPathname = useRef(pathname)
+
+  if (lastPathname.current !== pathname) {
+    window.scrollTo(0, 0)
+    lastPathname.current = pathname
+  }
+
+  useEffect(() => {
+    // Refresh ScrollTrigger to ensure all trigger positions are recalculated for the new layout
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 100)
+    
+    return () => clearTimeout(timer)
+  }, [pathname])
+
+  return null
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AppContent />
     </BrowserRouter>
   )

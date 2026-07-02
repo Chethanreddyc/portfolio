@@ -19,23 +19,8 @@ export interface RippleDisplacementSliderProps {
 const DEFAULT_SLIDES: RippleSlide[] = [
   {
     title: "AWS-CP",
-    description: "The Earth's greatest defender. Constantly pushing past his limits to achieve new heights like Ultra Instinct.",
+    description: "AWS Certified Cloud Practitioner (2026)",
     image: "/AWS.jpg", 
-  },
-  {
-    title: "AWS-DAV",
-    description: "Captain of the Straw Hat Pirates. The Sun God Nika who brings smiles and liberates the seas with Gear 5.",
-    image: "/luffy.png", 
-  },
-  {
-    title: "ServiceNow",
-    description: "The Hero of the Hidden Leaf. Wielding the massive power of the Nine-Tails and Six Paths Sage Mode.",
-    image: "/naruto.png", 
-  },
-  {
-    title: "Azure",
-    description: "The Hero of the Hidden Leaf. Wielding the massive power of the Nine-Tails and Six Paths Sage Mode.",
-    image: "/naruto.png", 
   }
 ];
 
