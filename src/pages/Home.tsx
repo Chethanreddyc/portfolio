@@ -31,14 +31,19 @@ function Home() {
               textAlign="left"
               className="text-foreground inline-block"
             />
-            <SplitText
-              text="chethan"
-              delay={40}
-              duration={0.8}
-              tag="span"
-              textAlign="left"
-              className="gradient-text inline-block"
-            />
+            <span
+              className="inline-block rounded-lg px-3 py-1"
+              style={{ background: "#000000" }}
+            >
+              <SplitText
+                text="Chethan"
+                delay={40}
+                duration={0.8}
+                tag="span"
+                textAlign="left"
+                className="gradient-text inline-block"
+              />
+            </span>
           </h1>
 
           <BlurText
