@@ -32,8 +32,14 @@ function Home() {
               className="text-foreground inline-block"
             />
             <span
-              className="inline-block rounded-lg px-3 py-1"
-              style={{ background: "#000000" }}
+              className="inline-block rounded-lg px-3"
+              style={{
+                background: "#000000",
+                overflow: "visible",
+                paddingTop: "0.15em",
+                paddingBottom: "0.15em",
+                lineHeight: "inherit",
+              }}
             >
               <SplitText
                 text="Chethan"
@@ -42,6 +48,8 @@ function Home() {
                 tag="span"
                 textAlign="left"
                 className="gradient-text inline-block"
+                from={{ opacity: 0, y: 20 }}
+                to={{ opacity: 1, y: 0 }}
               />
             </span>
           </h1>
