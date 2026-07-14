@@ -22,7 +22,7 @@ function Home() {
             Welcome to my portfolio
           </span>
 
-          <h1 className="flex flex-wrap items-center justify-center md:justify-start gap-x-[0.2em] text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="flex flex-wrap items-center justify-center md:justify-start gap-x-[0.2em] text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl pb-2">
             <SplitText
               text="Hi, I'm"
               delay={40}
